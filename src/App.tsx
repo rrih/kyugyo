@@ -4,15 +4,13 @@ import { useState, useEffect } from 'react';
 import { KyugyoType } from './models/interfaces';
 import HeaderBar from './components/HeaderBar';
 
-// type Kyugyos = {
-//   kyugyo: KyugyoType[];
-// }
-
 // url
-const localUrl = 'http://localhost:8000';
-const prodUrl = 'https://kyugyo-back.herokuapp.com';
-const tmpUrl = process.env.NODE_ENV === 'development' ? localUrl : prodUrl;
-const apiUrl = `${tmpUrl}/api/kyugyos`;
+// 念のためコメントアウトしておく
+// const localUrl = 'http://localhost:8000';
+// const prodUrl = 'https://kyugyo-back.herokuapp.com';
+// const tmpUrl = process.env.NODE_ENV === 'development' ? localUrl : prodUrl;
+// const apiUrl = `${tmpUrl}/api/kyugyos`;
+const apiUrl = 'https://kyugyo-back.herokuapp.com/api/kyugyos';
 
 const App = () => {
   const [kyugyos, setKyugyos] = useState<KyugyoType[]>([]);
