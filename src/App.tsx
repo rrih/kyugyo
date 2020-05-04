@@ -1,23 +1,16 @@
 import * as React from 'react';
 import axios from "axios";
-// import { render } from 'react-dom';
-// import { KyugyoType } from './models/interfaces';
-// import { render } from '@testing-library/react';
+import { useState, useEffect } from 'react';
+import { KyugyoType } from './models/interfaces';
 
 // type Kyugyos = {
 //   kyugyo: KyugyoType[];
 // }
 
-// export const KyugyoContext = React.createContext<Partial<ContextProps>>({});
 const apiUrl = 'http://localhost:8000/api/kyugyos';
 
-class App extends React.Component {
-  constructor() {
-    super({});
-    this.state = {
-      kyugyos: [],
-    };
-  }
+const App = () => {
+  const [kyugyos, setKyugyos] = useState<KyugyoType[]>([]);
   // 開発環境であるかどうか
   // TODO ここの切り替えどうにかする
   // const isDevEnv = true;
@@ -25,31 +18,26 @@ class App extends React.Component {
   // const prodUrl = "https://kyugyo-back.herokuapp.com/";
   // const apiUrl = isDevEnv ? `${devUrl}/api/kyugyos` : `${prodUrl}/api/kyugyos`;
 
-  getKyugyos = async () => {
-    axios.get(apiUrl)
-      .then((response) => {
-        this.setState({
-          kyugyos: response.data
-        })
-        console.log('以下、this.state');
-        console.log(this.state);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const getKyugyos = async () => {
+    const response = await axios.get(apiUrl);
+    console.log(response.data);
+    console.log(response.data[0].isClosed);
+    setKyugyos(response.data);
   };
 
+  useEffect(() => {
+    getKyugyos();
+  }, []);
 
-  render() {
     return (
       <div>
-          <button onClick={this.getKyugyos} className="btn btn-primary">get kyugyos</button>
-          <div>
-            {/* {this.state.kyugyos} */}
-          </div>
+        <ul>
+          {kyugyos.map((k, i) => {
+            return <li>id:{k.id} {k.storeName} {k.isClosed ? '休業中' : '開業中'}</li>
+          })}
+        </ul>
       </div>
     );
-  }  
 }
 
 export default App;
