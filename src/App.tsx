@@ -8,16 +8,14 @@ import HeaderBar from './components/HeaderBar';
 //   kyugyo: KyugyoType[];
 // }
 
-const apiUrl = 'http://localhost:8000/api/kyugyos';
+// url
+const localUrl = 'http://localhost:8000';
+const prodUrl = 'https://kyugyo-back.herokuapp.com';
+const tmpUrl = process.env.NODE_ENV === 'development' ? localUrl : prodUrl;
+const apiUrl = `${tmpUrl}/api/kyugyos`;
 
 const App = () => {
   const [kyugyos, setKyugyos] = useState<KyugyoType[]>([]);
-  // 開発環境であるかどうか
-  // TODO ここの切り替えどうにかする
-  // const isDevEnv = true;
-  // const devUrl = "http://localhost:8080/";
-  // const prodUrl = "https://kyugyo-back.herokuapp.com/";
-  // const apiUrl = isDevEnv ? `${devUrl}/api/kyugyos` : `${prodUrl}/api/kyugyos`;
 
   const getKyugyos = async () => {
     const response = await axios.get(apiUrl);
@@ -27,6 +25,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    console.log(process.env.NODE_ENV);
     getKyugyos();
   }, []);
 
