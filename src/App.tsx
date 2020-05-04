@@ -2,6 +2,7 @@ import * as React from 'react';
 import axios from "axios";
 import { useState, useEffect } from 'react';
 import { KyugyoType } from './models/interfaces';
+import HeaderBar from './components/HeaderBar';
 
 // type Kyugyos = {
 //   kyugyo: KyugyoType[];
@@ -31,11 +32,19 @@ const App = () => {
 
     return (
       <div>
-        <ul>
-          {kyugyos.map((k, i) => {
-            return <li>id:{k.id} {k.storeName} {k.isClosed ? '休業中' : '開業中'}</li>
-          })}
-        </ul>
+        <HeaderBar />
+        <div className="w-75 mx-auto my-4">
+          <ul className="list-unstyled">
+            {kyugyos.map((k, i) => {
+              return (
+                <li className="h4 d-flex justify-content-between">
+                  <div>{k.storeName} </div>
+                  <div>{k.isClosed ? '休業中' : '開業中'}</div>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
       </div>
     );
 }
