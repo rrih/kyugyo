@@ -30,23 +30,25 @@ const App = () => {
     getKyugyos();
   }, []);
 
-    return (
-      <div>
-        <HeaderBar />
-        <div className="w-75 mx-auto my-4">
-          <ul className="list-unstyled">
-            {kyugyos.map((k, i) => {
-              return (
-                <li className="h4 d-flex justify-content-between">
-                  <div>{k.storeName} </div>
-                  <div>{k.isClosed ? '休業中' : '開業中'}</div>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
+  return (
+    <div className="bg-dark pb-5">
+      <HeaderBar />
+      <div className="w-100 mx-auto my-4 px-sm-5">
+        <ul className="list-unstyled px-sm-5">
+          {kyugyos.map((k, i) => {
+            return (
+              <li className="h4 d-flex justify-content-between border border-white py-4 px-3 px-md-5">
+                <div className="flex-fill text-white">{k.storeName} </div>
+                <div className="border border-white text-white p-2 p-sm-3 rounded-pill text-nowrap my-3 my-sm-0">
+                  {k.isClosed ? '休業中' : '開業中'}
+                </div>
+              </li>
+            )
+          })}
+        </ul>
       </div>
-    );
+    </div>
+  );
 }
 
 export default App;
