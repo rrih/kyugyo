@@ -10,17 +10,34 @@ const KyugyoPage = (props) => {
 
     return (
         <>
-            <div className="text-white">{id} kyugyo page</div>
+            <h2 className="text-white mb-4">店舗情報</h2>
             {kyugyo !== undefined && (
-                <div className="flex-fill text-white kg-font-size">
-                <div>店名：{kyugyo.storeName}</div>
-                <div>住所：{kyugyo.address}</div>
-                <div>店舗URL：{kyugyo.hpUrl}</div>
-                <div>更新日時：{kyugyo.updatedAt}</div>
-                <div className="border border-white text-white p-2 p-sm-3 rounded-pill text-nowrap my-3 my-sm-0 kg-kyugyo-button">
-                    {kyugyo.isClosed ? '休業中' : '開業中'}
+                <div className="flex-fill text-white kg-font-size ml-4">
+                    <div className="kg-kyugyo-button text-center border border-white h3
+                                    text-white rounded-pill text-nowrap mx-auto p-2 p-sm-3 my-3 my-sm-5 w-25">
+                        {kyugyo.isClosed ? '休業中' : '開業中'}
+                    </div>
+                    <div className="h3 border border-white mb-3 py-4 px-5">店名：{kyugyo.storeName}</div>
+                    <div className="h3 border border-white mb-3 py-4 px-5">住所：{kyugyo.address}</div>
+                    <div className="border border-white mb-3 py-4 px-5">
+                        アクセス：{kyugyo.access}
+                    </div>
+                    <div className="border border-white mb-3 py-4 px-5">
+                        <h3>店舗URL</h3>
+                        {kyugyo.hpUrl}
+                    </div>
+                    <div className="kg-misc-box border border-white mb-3 pt-4 pb-5 px-5">
+                        <h3>備考</h3>
+                        {kyugyo.misc}
+                    </div>
+                    <div className="border border-white py-4 px-5">
+                        <div>更新日時：{kyugyo.updatedAt}</div>
+                        <div>作成日時：{kyugyo.createdAt}</div>
+                    </div>
+                    {/* <div className="border border-white text-white p-2 p-sm-3 rounded-pill text-nowrap my-3 my-sm-0 kg-kyugyo-button">
+                        {kyugyo.isClosed ? '休業中' : '開業中'}
+                    </div> */}
                 </div>
-            </div>
             )}
         </>
     );

@@ -14,7 +14,7 @@ const KyugyoList = (props) => {
                 {kyugyos.map((k, i) => {
                     return (
                         // <KyugyoPost />
-                        <li className="h4 d-flex justify-content-between border border-white py-4 px-3 px-md-5">
+                        <li className="h4 border border-white py-4 px-3 px-md-5">
                             <KyugyoPost
                                 kyugyo={k}
                             />

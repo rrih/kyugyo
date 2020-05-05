@@ -10,11 +10,7 @@ import { Route, Router, BrowserRouter } from 'react-router-dom';
 import TopPageContainer from './components/TopPageContainer';
 import KyugyoPage from './components/KyugyoPage';
 import About from './components/About';
-
-const localUrl = 'http://localhost:8000';
-const prodUrl = 'https://kyugyo-back.herokuapp.com';
-const tmpUrl = process.env.NODE_ENV === 'development' ? localUrl : prodUrl;
-const apiUrl = `${tmpUrl}/api/kyugyos`;
+import apiUrl from "./config";
 
 const App = () => {
   const [kyugyos, setKyugyos] = useState<KyugyoType[]>([]);
@@ -34,7 +30,7 @@ const App = () => {
         <HeaderBar />
         <div className="w-100 mx-auto my-4 px-sm-5">
           {/* <TopPageContainer kyugyos={kyugyos} /> */}
-          <Route exact path='/' render={() => <TopPageContainer kyugyos={kyugyos} />} />
+          <Route exact path='/' render={() => <TopPageContainer kyugyos={kyugyos} apiUrl={apiUrl} />} />
           <Route path='/about' render={() => <About />} />
           <Route path='/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match}/>}/>
         </div>

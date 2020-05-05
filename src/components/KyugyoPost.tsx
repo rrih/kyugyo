@@ -9,7 +9,7 @@ const KyugyoPost = (props) => {
 
     return (
         <Link to={link}>
-            <div className="flex-fill text-white kg-font-size">
+            <div className="flex-fill text-white kg-post-box">
                 <div>店名：{kyugyo.storeName}</div>
                 <div>住所：{kyugyo.address}</div>
                 <div>店舗URL：{kyugyo.hpUrl}</div>
