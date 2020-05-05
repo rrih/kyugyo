@@ -2,14 +2,16 @@
   "name": "kyugyo-front",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ryohek.github.io/kyugyo-front/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
-    "@types/react-dom": "^16.9.0",
     "axios": "^0.19.2",
+    "gh-pages": "^2.2.0",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
@@ -19,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +40,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^16.9.34"
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7"
   }
 }

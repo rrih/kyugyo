@@ -2,6 +2,7 @@ import * as React from 'react';
 import axios from "axios";
 import { useState, useEffect } from 'react';
 import { KyugyoType } from './models/interfaces';
+import './App.scss';
 import HeaderBar from './components/HeaderBar';
 
 // url
