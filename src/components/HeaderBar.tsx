@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import index from "../index.css";
 
 const HeaderBar = () => {
     return (
