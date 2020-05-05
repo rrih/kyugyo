@@ -6,6 +6,10 @@ import './App.scss';
 import HeaderBar from './components/HeaderBar';
 import InputKyugyo from './components/InputKyugyo';
 import KyugyoList from './components/KyugyoList';
+import { Route, Router, BrowserRouter } from 'react-router-dom';
+import TopPageContainer from './components/TopPageContainer';
+import KyugyoPage from './components/KyugyoPage';
+import About from './components/About';
 
 const localUrl = 'http://localhost:8000';
 const prodUrl = 'https://kyugyo-back.herokuapp.com';
@@ -26,13 +30,15 @@ const App = () => {
 
   return (
     <div className="bg-dark pb-5">
-      <HeaderBar />
-      <div className="w-100 mx-auto my-4 px-sm-5">
-        <InputKyugyo />
-        <KyugyoList
-          kyugyos={kyugyos}
-        />
-      </div>
+      <BrowserRouter>
+        <HeaderBar />
+        <div className="w-100 mx-auto my-4 px-sm-5">
+          {/* <TopPageContainer kyugyos={kyugyos} /> */}
+          <Route exact path='/' render={() => <TopPageContainer kyugyos={kyugyos} />} />
+          <Route path='/about' render={() => <About />} />
+          <Route path='/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match}/>}/>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
