@@ -6,8 +6,12 @@ import { Route } from 'react-router-dom';
 import KyugyoPage from './KyugyoPage';
 
 const KyugyoList = (props) => {
-    const kyugyos: KyugyoType[] = props.kyugyos;
+    const { kyugyos, setKyugyos } = props;
 
+    useEffect(() => {
+        // kyugyos
+        console.log('確認');
+    }, []);
     return (
         <>
             <ul className="list-unstyled px-sm-5">

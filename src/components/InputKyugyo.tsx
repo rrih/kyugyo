@@ -4,6 +4,7 @@ import apiUrl from '../config';
 import { KyugyoType } from '../models/interfaces';
 import KyugyoPage from './KyugyoPage';
 import { useState } from 'react';
+import { Redirect, Link } from 'react-router-dom';
 
 // input formを設置
 const InputKyugyo = () => {
@@ -15,7 +16,7 @@ const InputKyugyo = () => {
 
     // storeName address access hpUrl misc が入力され、postボタンが押されて発火したら実行する
     // state の変化を受け、apiを叩くメソッド
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         const kyugyos = {
             storeName: storeName,
             misc: misc,
@@ -24,6 +25,7 @@ const InputKyugyo = () => {
             hpUrl: hpUrl
         }
         axios.post(apiUrl, kyugyos);
+        // e.preventDefault();
     }
 
     // TODO 後で共通化
@@ -71,7 +73,7 @@ const InputKyugyo = () => {
                       onChange={(e) => { setMisc(e.target.value) }}
                     />
                 </div>
-                <button onClick={handleSubmit} className="btn btn-outline-light" >投稿する</button>
+                <Link to='/' onClick={handleSubmit} className="btn btn-outline-light">投稿する</Link>
             </form>
         </div>        
     )

@@ -1,17 +1,28 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import InputKyugyo from './InputKyugyo';
+import axios from "axios";
 import KyugyoList from './KyugyoList';
 import { Link } from 'react-router-dom';
+import apiUrl from '../config';
+import { KyugyoType } from '../models/interfaces';
 
 const TopPageContainer = (props) => {
-    const kyugyos = props.kyugyos;
+    const [ kyugyos, setKyugyos ] = useState<KyugyoType[]>([]);
+
+    const getKyugyos = async () => {
+        const response = await axios.get(apiUrl);
+        setKyugyos(response.data);
+    };
+
+    useEffect(() => {
+        getKyugyos();
+    }, []);
 
     return (
         <>
             <Link to='/post' className="text-white">休業情報を投稿する</Link>
             <KyugyoList
-                kyugyos={kyugyos}
+                kyugyos={kyugyos.reverse()}
             />
         </>
     );
