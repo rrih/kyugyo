@@ -5,7 +5,7 @@ import { KyugyoType } from '../models/interfaces';
 
 const KyugyoPost = (props) => {
     const kyugyo: KyugyoType = props.kyugyo;
-    const link = `kyugyos/${kyugyo.id}`;
+    const link = `/kyugyo-front/kyugyos/${kyugyo.id}`;
 
     return (
         <Link to={link}>
