@@ -1,18 +1,16 @@
-import * as React from 'react';
+import React from 'react';
 import axios from "axios";
 import { useState, useEffect } from 'react';
 import { KyugyoType } from './models/interfaces';
 import './App.scss';
-import HeaderBar from './components/HeaderBar';
-import InputKyugyo from './components/InputKyugyo';
-import KyugyoList from './components/KyugyoList';
-import { Route, Router, BrowserRouter, HashRouter, Switch, Link } from 'react-router-dom';
+import { Route, Router, Switch, Link } from 'react-router-dom';
 import TopPageContainer from './components/TopPageContainer';
 import KyugyoPage from './components/KyugyoPage';
 import About from './components/About';
 import apiUrl from "./config";
 import PostPageContainer from './components/PostPageContainer';
 import history from "./history";
+import HeaderBar from './components/HeaderBar';
 
 const App = () => {
   const [kyugyos, setKyugyos] = useState<KyugyoType[]>([]);
@@ -35,7 +33,7 @@ const App = () => {
         <HeaderBar />
         <div className="w-100 mx-auto my-4 px-sm-5">
           <Switch>
-            <Route exact={true} path='/kyugyo-front' render={() => <TopPageContainer kyugyos={kyugyos} />} />
+            <Route exact path='/kyugyo-front' render={() => <TopPageContainer kyugyos={kyugyos} />} />
             <Route exact path='/kyugyo-front/about' render={() => <About />} />
             <Route exact path='/kyugyo-front/post' render={() => <PostPageContainer />} />
             <Route exact path='/kyugyo-front/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match}/>}/>
