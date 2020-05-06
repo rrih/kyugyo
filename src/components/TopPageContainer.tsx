@@ -22,7 +22,7 @@ const TopPageContainer = (props) => {
         <>
             <Link to='/kyugyo-front/post' className="text-white">休業情報を投稿する</Link>
             <KyugyoList
-                kyugyos={kyugyos.reverse()}
+                kyugyos={kyugyos}
             />
         </>
     );
