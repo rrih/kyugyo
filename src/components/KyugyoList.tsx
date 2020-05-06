@@ -8,10 +8,6 @@ import KyugyoPage from './KyugyoPage';
 const KyugyoList = (props) => {
     const { kyugyos, setKyugyos } = props;
 
-    useEffect(() => {
-        // kyugyos
-        console.log('確認');
-    }, []);
     return (
         <>
             <ul className="list-unstyled px-sm-5">
@@ -22,7 +18,6 @@ const KyugyoList = (props) => {
                             <KyugyoPost
                                 kyugyo={k}
                             />
-                            {/* <Route path={k.id} render={() => <KyugyoPage kyugyo={k}>}/> */}
                         </li>
                     )
                 })}

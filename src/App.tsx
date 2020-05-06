@@ -36,9 +36,9 @@ const App = () => {
         <div className="w-100 mx-auto my-4 px-sm-5">
           <Switch>
             <Route exact={true} path='/kyugyo-front' render={() => <TopPageContainer kyugyos={kyugyos} />} />
-            <Route path='/kyugyo-front/about' render={() => <About />} />
-            <Route path='/kyugyo-front/post' render={() => <PostPageContainer />} />
-            <Route path='/kyugyo-front/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match}/>}/>
+            <Route exact path='/kyugyo-front/about' render={() => <About />} />
+            <Route exact path='/kyugyo-front/post' render={() => <PostPageContainer />} />
+            <Route exact path='/kyugyo-front/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match}/>}/>
           </Switch>
           <Link to='/kyugyo-front/about' className="text-white">休業.comについて</Link>
         </div>

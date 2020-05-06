@@ -28,9 +28,7 @@ const InputKyugyo = () => {
         axios.post(apiUrl, kyugyos).then((e) => {
             history.push('/kyugyo-front');
         })
-        
         e.preventDefault();
-        
     }
 
     // TODO 後で共通化
