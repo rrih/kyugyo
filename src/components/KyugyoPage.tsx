@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { KyugyoType } from '../models/interfaces';
 import axios from 'axios';
 import apiUrl from '../config';

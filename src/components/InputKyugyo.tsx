@@ -1,10 +1,10 @@
 import * as React from 'react';
 import axios from 'axios';
 import apiUrl from '../config';
-import { KyugyoType } from '../models/interfaces';
-import KyugyoPage from './KyugyoPage';
+// import { KyugyoType } from '../models/interfaces';
+// import KyugyoPage from './KyugyoPage';
 import { useState } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+// import { Redirect, Link } from 'react-router-dom';
 import history from "../history";
 
 // input formを設置

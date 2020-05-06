@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import KyugyoPost from './KyugyoPost';
-import { KyugyoType } from '../models/interfaces';
-import { Route } from 'react-router-dom';
-import KyugyoPage from './KyugyoPage';
+// import { KyugyoType } from '../models/interfaces';
+// import { Route } from 'react-router-dom';
+// import KyugyoPage from './KyugyoPage';
 
 const KyugyoList = (props) => {
     const { kyugyos, setKyugyos } = props;

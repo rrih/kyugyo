@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 // 休業POSTをクリックすると遷移する休業1店舗についての詳細ページ
 const About = () => {
