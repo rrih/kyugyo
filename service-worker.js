@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/kyugyo-front/precache-manifest.455e8d6592880272560bb313e2bc0bb7.js"
+  "/kyugyo-front/precache-manifest.8711a828ac0d5516cb96f70810522b2a.js"
 );
 
 self.addEventListener('message', (event) => {
