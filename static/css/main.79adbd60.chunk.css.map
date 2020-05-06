@@ -1,1 +1,0 @@
-{"version":3,"sources":["App.scss"],"names":[],"mappings":"AAAA,aACI,cAAe,CAClB,kBAGG,eAAgB,CAChB,eAAgB,CACnB,aAGG,gBAAiB","file":"main.79adbd60.chunk.css","sourcesContent":[".kg-post-box {\n    font-size: 15px;\n}\n\n.kg-kyugyo-button {\n    min-height: 20px;\n    max-height: 65px;\n}\n\n.kg-misc-box {\n    min-height: 100px;\n}"]}

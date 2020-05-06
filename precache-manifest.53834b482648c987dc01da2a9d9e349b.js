@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "06ee6a2c47f613aaf67804ce9ac3f156",
+    "revision": "2d14ac8e207f3d427fbeab483a21767e",
     "url": "/kyugyo-front/index.html"
   },
   {
-    "revision": "ba219bfb4948ea3bc562",
-    "url": "/kyugyo-front/static/css/main.79adbd60.chunk.css"
+    "revision": "36e01543e3737805860a",
+    "url": "/kyugyo-front/static/css/main.f7ba274a.chunk.css"
   },
   {
     "revision": "ca4a21361384186dca5b",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kyugyo-front/static/js/2.375f33ad.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ba219bfb4948ea3bc562",
-    "url": "/kyugyo-front/static/js/main.e6769b24.chunk.js"
+    "revision": "36e01543e3737805860a",
+    "url": "/kyugyo-front/static/js/main.f80ef357.chunk.js"
   },
   {
     "revision": "a32c110d8ea846c32417",
