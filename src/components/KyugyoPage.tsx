@@ -47,7 +47,8 @@ const KyugyoPage = (props) => {
                             <div>作成日時：{kyugyo.createdAt}</div>
                         </div>
                     </div>
-                    <div className="text-right"><button onClick={HandleDeleteKyugyo} className="btn btn-outline-light">この休業情報を削除する</button></div>
+                    {/* TODO 本当に削除するか確認モーダル追加 */}
+                    <div className="text-right"><button onClick={HandleDeleteKyugyo} className="btn btn-outline-danger mt-3">この休業情報を削除する</button></div>
                 </>
             )}
         </>

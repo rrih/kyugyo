@@ -40,7 +40,9 @@ const App = () => {
             <Route exact path='/kyugyo-front/post' render={() => <PostPageContainer />} />
             <Route exact path='/kyugyo-front/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match}/>}/>
           </Switch>
-          <Link to='/kyugyo-front/about' className="text-white">休業.comについて</Link>
+          <div className="text-center mt-5 pt-5">
+            <Link to='/kyugyo-front/about' className="text-white">休業.comについて</Link>
+          </div>
         </div>
       </Router>
     </div>

@@ -33,15 +33,16 @@ const InputKyugyo = () => {
 
     // TODO 後で共通化
     return (
-        <div className="text-center">
-            <div className="text-white h3">休業情報を入力してください</div>
-            <form className="border border-white p-4">
+        <div className="pb-5">
+            <div className="text-white h3 mb-4">休業情報の入力</div>
+            <form className="border border-white px-4 py-5 rounded form-group">
                 <div className="p-4">
                     <label className="text-white">店の名前</label>
                     <input
                         type="text"
                         name="storeName"
                         onChange={(e) => { setStoreName(e.target.value) }}
+                        className='form-control'
                     />
                 </div>
                 <div className="p-4">
@@ -50,6 +51,7 @@ const InputKyugyo = () => {
                       type="text"
                       name="address"
                       onChange={(e) => { setAddress(e.target.value) }}
+                      className='form-control'
                     />
                 </div>
                 <div className="p-4">
@@ -58,6 +60,7 @@ const InputKyugyo = () => {
                       type="text"
                       name="access"
                       onChange={(e) => { setAccess(e.target.value) }}
+                      className='form-control'
                     />
                 </div>
                 <div className="p-4">
@@ -66,6 +69,7 @@ const InputKyugyo = () => {
                       type="text"
                       name="hpUrl"
                       onChange={(e) => { setHpUrl(e.target.value) }}
+                      className='form-control'
                     />
                 </div>
                 <div className="p-4">
@@ -74,9 +78,12 @@ const InputKyugyo = () => {
                       type="text"
                       name="misc"
                       onChange={(e) => { setMisc(e.target.value) }}
+                      className='form-control'
                     />
                 </div>
-                <button onClick={handleSubmit} className="btn btn-outline-light">投稿する</button>
+                <div className="text-center">
+                    <button onClick={handleSubmit} className="btn btn-outline-light">投稿する</button>
+                </div>
             </form>
         </div>        
     )
