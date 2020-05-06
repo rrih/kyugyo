@@ -12,6 +12,7 @@ import KyugyoPage from './components/KyugyoPage';
 import About from './components/About';
 import apiUrl from "./config";
 import PostPageContainer from './components/PostPageContainer';
+import history from "./history";
 
 const App = () => {
   const [kyugyos, setKyugyos] = useState<KyugyoType[]>([]);
@@ -26,22 +27,20 @@ const App = () => {
   }, []);
 
   return (
-    // <HashRouter>
-      <div className="bg-dark pb-5">
-        <BrowserRouter>
-          <HeaderBar />
-          <div className="w-100 mx-auto my-4 px-sm-5">
-            <Switch>
-              <Route exact={true} path='/' render={() => <TopPageContainer kyugyos={kyugyos} />} />
-              <Route path='/about' render={() => <About />} />
-              <Route path='/post' render={() => <PostPageContainer />} />
-              <Route path='/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match}/>}/>
-            </Switch>
-            <Link to='/about' className="text-white">休業.comについて</Link>
-          </div>
-        </BrowserRouter>
-      </div>
-    // </HashRouter>
+    <div className="bg-dark pb-5">
+      <Router history={history}>
+        <HeaderBar />
+        <div className="w-100 mx-auto my-4 px-sm-5">
+          <Switch>
+            <Route exact={true} path='/kyugyo-front' render={() => <TopPageContainer kyugyos={kyugyos} />} />
+            <Route path='/kyugyo-front/about' render={() => <About />} />
+            <Route path='/kyugyo-front/post' render={() => <PostPageContainer />} />
+            <Route path='/kyugyo-front/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match}/>}/>
+          </Switch>
+          <Link to='/kyugyo-front/about' className="text-white">休業.comについて</Link>
+        </div>
+      </Router>
+    </div>
   );
 }
 

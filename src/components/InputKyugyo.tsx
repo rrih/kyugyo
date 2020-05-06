@@ -5,6 +5,7 @@ import { KyugyoType } from '../models/interfaces';
 import KyugyoPage from './KyugyoPage';
 import { useState } from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import history from "../history";
 
 // input formを設置
 const InputKyugyo = () => {
@@ -24,8 +25,12 @@ const InputKyugyo = () => {
             access: access,
             hpUrl: hpUrl
         }
-        axios.post(apiUrl, kyugyos);
-        // e.preventDefault();
+        axios.post(apiUrl, kyugyos).then((e) => {
+            history.push('/kyugyo-front');
+        })
+        
+        e.preventDefault();
+        
     }
 
     // TODO 後で共通化
@@ -73,7 +78,7 @@ const InputKyugyo = () => {
                       onChange={(e) => { setMisc(e.target.value) }}
                     />
                 </div>
-                <Link to='/' onClick={handleSubmit} className="btn btn-outline-light">投稿する</Link>
+                <button onClick={handleSubmit} className="btn btn-outline-light">投稿する</button>
             </form>
         </div>        
     )

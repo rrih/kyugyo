@@ -34,9 +34,6 @@ const KyugyoPage = (props) => {
                         <div>更新日時：{kyugyo.updatedAt}</div>
                         <div>作成日時：{kyugyo.createdAt}</div>
                     </div>
-                    {/* <div className="border border-white text-white p-2 p-sm-3 rounded-pill text-nowrap my-3 my-sm-0 kg-kyugyo-button">
-                        {kyugyo.isClosed ? '休業中' : '開業中'}
-                    </div> */}
                 </div>
             )}
         </>
