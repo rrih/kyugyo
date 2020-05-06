@@ -1,11 +1,78 @@
 import * as React from 'react';
+import axios from 'axios';
+import apiUrl from '../config';
+import { KyugyoType } from '../models/interfaces';
+import KyugyoPage from './KyugyoPage';
+import { useState } from 'react';
 
 // input formを設置
-const InputKyugyo = (props) => {
+const InputKyugyo = () => {
+    const [storeName, setStoreName] = useState('');
+    const [address, setAddress] = useState('');
+    const [access, setAccess] = useState('');
+    const [hpUrl, setHpUrl] = useState('');
+    const [misc, setMisc] = useState('');
 
+    // storeName address access hpUrl misc が入力され、postボタンが押されて発火したら実行する
+    // state の変化を受け、apiを叩くメソッド
+    const handleSubmit = () => {
+        const kyugyos = {
+            storeName: storeName,
+            misc: misc,
+            address: address,
+            access: access,
+            hpUrl: hpUrl
+        }
+        axios.post(apiUrl, kyugyos);
+    }
+
+    // TODO 後で共通化
     return (
         <div className="text-center">
             <div className="text-white h3">休業情報を入力してください</div>
+            <form className="border border-white p-4">
+                <div className="p-4">
+                    <label className="text-white">店の名前</label>
+                    <input
+                        type="text"
+                        name="storeName"
+                        onChange={(e) => { setStoreName(e.target.value) }}
+                    />
+                </div>
+                <div className="p-4">
+                    <label className="text-white">住所</label>
+                    <input
+                      type="text"
+                      name="address"
+                      onChange={(e) => { setAddress(e.target.value) }}
+                    />
+                </div>
+                <div className="p-4">
+                    <label className="text-white">アクセス</label>
+                    <input 
+                      type="text"
+                      name="access"
+                      onChange={(e) => { setAccess(e.target.value) }}
+                    />
+                </div>
+                <div className="p-4">
+                    <label className="text-white">ホームページ等のURL</label>
+                    <input 
+                      type="text"
+                      name="hpUrl"
+                      onChange={(e) => { setHpUrl(e.target.value) }}
+                    />
+                </div>
+                <div className="p-4">
+                    <label  className="text-white">備考</label>
+                    <input 
+                      type="text"
+                      name="misc"
+                      onChange={(e) => { setMisc(e.target.value) }}
+                    />
+                </div>
+                <button onClick={handleSubmit} className="btn btn-outline-light" >投稿する</button>
+            </form>
         </div>        
     )
 }

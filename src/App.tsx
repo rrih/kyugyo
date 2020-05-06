@@ -11,6 +11,7 @@ import TopPageContainer from './components/TopPageContainer';
 import KyugyoPage from './components/KyugyoPage';
 import About from './components/About';
 import apiUrl from "./config";
+import PostPageContainer from './components/PostPageContainer';
 
 const App = () => {
   const [kyugyos, setKyugyos] = useState<KyugyoType[]>([]);
@@ -30,8 +31,9 @@ const App = () => {
         <HeaderBar />
         <div className="w-100 mx-auto my-4 px-sm-5">
           {/* <TopPageContainer kyugyos={kyugyos} /> */}
-          <Route exact path='/' render={() => <TopPageContainer kyugyos={kyugyos} apiUrl={apiUrl} />} />
+          <Route exact path='/' render={() => <TopPageContainer kyugyos={kyugyos} />} />
           <Route path='/about' render={() => <About />} />
+          <Route path='/post' render={() => <PostPageContainer />} />
           <Route path='/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match}/>}/>
         </div>
       </BrowserRouter>
