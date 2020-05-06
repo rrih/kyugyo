@@ -9,7 +9,7 @@ const TopPageContainer = (props) => {
 
     return (
         <>
-            <Link to='/kyugyo-front/post' className="text-white">休業情報を投稿する</Link>
+            <Link to='/post' className="text-white">休業情報を投稿する</Link>
             <KyugyoList
                 kyugyos={kyugyos}
             />

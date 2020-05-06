@@ -1,6 +1,6 @@
 ## kyugyo-front
 
-[休業.com](https://ryohek.github.io/kyugyo-front)  
+[休業.com]
 > 休業中の店の情報共有サイト
 
 使用技術  
