@@ -3,6 +3,8 @@ import * as React from 'react';
 import { KyugyoType } from '../models/interfaces';
 import axios from 'axios';
 import apiUrl from '../config';
+import { useState } from 'react';
+import InputKyugyo from './InputKyugyo';
 import history from "../history";
 
 // 休業POSTをクリックすると遷移する休業1店舗についての詳細ページ
@@ -10,6 +12,14 @@ const KyugyoPage = (props) => {
     const kyugyos: KyugyoType[] = props.kyugyos;
     const id = props.match.params.id;
     const kyugyo: KyugyoType | undefined = kyugyos.find((kyugyo: KyugyoType) => id === kyugyo.id);
+    const [isUpdating, setIsUpdating] = useState<Boolean>(false);
+    // update用の変数
+    const [isClosed, setIsClosed] = useState(kyugyo?.isClosed);
+    const [storeName, setStoreName] = useState(kyugyo?.storeName);
+    const [address, setAddress] = useState(kyugyo?.address);
+    const [access, setAccess] = useState(kyugyo?.access);
+    const [hpUrl, setHpUrl] = useState(kyugyo?.hpUrl);
+    const [misc, setMisc] = useState(kyugyo?.misc);
 
     const HandleDeleteKyugyo = (e) => {
         if (kyugyo !== undefined) {
@@ -19,10 +29,40 @@ const KyugyoPage = (props) => {
         }
         e.preventDefault();
     }
+
+    // 休業情報を更新し、更新し終わった状態にする
+    const HandleUpdateKyugyoAndSetUpdatedMode = (e) => {
+        console.log('updating...');
+        const updateKyugyos = {
+            id: id,
+            storeName: storeName,
+            misc: misc,
+            address: address,
+            access: access,
+            hpUrl: hpUrl
+        }
+        console.log(updateKyugyos);
+        axios.put(`${apiUrl}/${id}`, updateKyugyos)
+        .then((e) => {
+            // history.push('/kyugyo-front');
+            setIsUpdating(!isUpdating);
+            // リダイレクト？
+            const url = `/kyugyo-front/kyugyo/${id}`;
+            history.push(url);
+        })
+        e.preventDefault();
+    }
+
+    /**
+     * この休業情報を編集するボタンが押された時にフォームへと変換するトリガー
+     */
+    const changeUpdateMode = () => {
+        setIsUpdating(!isUpdating);
+    }
     return (
         <>
             <h2 className="text-white mb-4">店舗情報</h2>
-            {kyugyo !== undefined && (
+            {(kyugyo !== undefined && !isUpdating) && (
                 <>
                     <div className="flex-fill text-white kg-font-size ml-4">
                         <div className="kg-kyugyo-button text-center border border-white h3
@@ -47,10 +87,80 @@ const KyugyoPage = (props) => {
                             <div>作成日時：{kyugyo.createdAt}</div>
                         </div>
                     </div>
-                    {/* TODO 本当に削除するか確認モーダル追加 */}
-                    <div className="text-right"><button onClick={HandleDeleteKyugyo} className="btn btn-outline-danger mt-3">この休業情報を削除する</button></div>
                 </>
             )}
+            {(kyugyo !== undefined && isUpdating) && (
+                <>
+                    <div className="flex-fill text-white kg-font-size ml-4">
+                        <h2>休業情報の更新</h2>
+                        <form className="border border-white px-4 py-5 rounded form-group">
+                            <div>
+                                <label className="text-white">休業ステータス</label>
+                                <input
+                                    type="checkbox"
+                                    name="isClosed"
+                                    onClick={(e) => {setIsClosed(!isClosed)}}
+                                    defaultChecked
+                                />
+                            </div>
+                            <div className="p-4">
+                                <label className="text-white">店の名前</label>
+                                <input
+                                    type="text"
+                                    name="storeName"
+                                    onChange={(e) => { setStoreName(e.target.value) }}
+                                    className='form-control'
+                                    defaultValue={storeName}
+                                />
+                            </div>
+                            <div className="p-4">
+                                <label className="text-white">住所</label>
+                                <input
+                                    type="text"
+                                    name="address"
+                                    onChange={(e) => { setAddress(e.target.value) }}
+                                    className='form-control'
+                                    defaultValue={address}
+                                />
+                            </div>
+                            <div className="p-4">
+                                <label className="text-white">アクセス</label>
+                                <input 
+                                    type="text"
+                                    name="access"
+                                    onChange={(e) => { setAccess(e.target.value) }}
+                                    className='form-control'
+                                    defaultValue={access}
+                                />
+                            </div>
+                            <div className="p-4">
+                                <label className="text-white">ホームページ等のURL</label>
+                                <input 
+                                    type="text"
+                                    name="hpUrl"
+                                    onChange={(e) => { setHpUrl(e.target.value) }}
+                                    className='form-control'
+                                    defaultValue={hpUrl}
+                                />
+                            </div>
+                            <div className="p-4">
+                                <label  className="text-white">備考</label>
+                                <input 
+                                    type="text"
+                                    name="misc"
+                                    onChange={(e) => { setMisc(e.target.value) }}
+                                    className='form-control'
+                                    defaultValue={misc}
+                                />
+                            </div>
+                        </form>
+                    </div>
+                </>
+            )}
+            {!isUpdating && (<div className="text-right"><button onClick={changeUpdateMode} className="btn btn-outline-info mt-3">この休業情報を編集する</button></div>)}
+            {isUpdating && (<div className="text-right"><button onClick={HandleUpdateKyugyoAndSetUpdatedMode} className="btn btn-outline-primary mt-3">この内容で編集完了する</button></div>)}
+            {/* TODO 本当に削除するか確認モーダル追加 */}
+            <div className="text-right"><button onClick={HandleDeleteKyugyo} className="btn btn-outline-danger mt-3">この休業情報を削除する</button></div>
         </>
     );
 }

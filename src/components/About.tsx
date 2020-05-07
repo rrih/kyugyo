@@ -47,6 +47,9 @@ const About = () => {
                 <h2>お問い合わせ先</h2>
                 メールアドレス：rsklvあっとicloud.com<br />
                 あっと部分を@にしてください
+                <h2>サービスに関する改善、修正要望、不具合があったらissueにお願いします</h2>
+                <a href='https://github.com/ryohek/kyugyo-front/issues'>フロント側(画面上の不具合、4XX系のエラーが出た場合)はこちらから</a>
+                <a href='https://github.com/ryohek/kyugyo-back/issues'>サーバー側(5XX系のエラーが出た場合)はこちらから</a>
             </div>
         </div>
     );
