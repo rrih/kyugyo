@@ -18,9 +18,6 @@ const App = () => {
   const getKyugyos = async () => {
     const response = await axios.get(apiUrl);
     setKyugyos(response.data);
-    kyugyos.reverse();
-    console.log(kyugyos);
-    console.log(setKyugyos);
   };
 
   useEffect(() => {

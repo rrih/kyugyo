@@ -7,11 +7,12 @@ import { useState } from 'react';
 import InputKyugyo from './InputKyugyo';
 import history from "../history";
 
+
 // 休業POSTをクリックすると遷移する休業1店舗についての詳細ページ
 const KyugyoPage = (props) => {
-    const kyugyos: KyugyoType[] = props.kyugyos;
+    const kyugyos = props.kyugyos; // 親とリンクしてる
     const id = props.match.params.id;
-    const kyugyo: KyugyoType | undefined = kyugyos.find((kyugyo: KyugyoType) => id === kyugyo.id);
+    const [kyugyo, setKyugyo] = useState<KyugyoType>(kyugyos.find((kyugyo: KyugyoType) => id === kyugyo.id));
     const [isUpdating, setIsUpdating] = useState<Boolean>(false);
     // update用の変数
     const [isClosed, setIsClosed] = useState(kyugyo?.isClosed);
@@ -41,13 +42,18 @@ const KyugyoPage = (props) => {
             hpUrl: hpUrl
         }
         axios.put(`${apiUrl}/${id}`, updateKyugyos)
-        .then((e) => {
+        .then((res) => {
             setIsUpdating(!isUpdating);
+            setKyugyo(res.data);
+            // setKyugyos(res.data);
+            
             // 一旦トップへ飛ばすことにする            
-            // const url = `/kyugyo-front/kyugyo/${id}`;
-            history.push('/kyugyo-front');
+            const url = `/kyugyo-front/kyugyo/${id}`;
+            history.push(url);
         })
         e.preventDefault();
+        console.log(kyugyos);
+        console.log(kyugyo);
     }
 
     /**
@@ -64,12 +70,12 @@ const KyugyoPage = (props) => {
                     <div className="flex-fill text-white kg-font-size ml-4">
                         <div className="kg-kyugyo-button text-center border border-white h3
                                         text-white rounded-pill text-nowrap mx-auto p-2 p-sm-3 my-3 my-sm-5 w-25">
-                            {kyugyo.isClosed ? '休業中' : '開業中'}
+                            {isClosed ? '休業中' : '開業中'}
                         </div>
-                        <div className="h3 border border-white mb-3 py-4 px-5">店名：{kyugyo.storeName}</div>
-                        <div className="h3 border border-white mb-3 py-4 px-5">住所：{kyugyo.address}</div>
+                        <div className="h3 border border-white mb-3 py-4 px-5">店名：{storeName}</div>
+                        <div className="h3 border border-white mb-3 py-4 px-5">住所：{address}</div>
                         <div className="border border-white mb-3 py-4 px-5">
-                            アクセス：{kyugyo.access}
+                            アクセス：{access}
                         </div>
                         <div className="border border-white mb-3 py-4 px-5">
                             <h3>店舗URL</h3>
