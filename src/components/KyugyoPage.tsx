@@ -32,7 +32,6 @@ const KyugyoPage = (props) => {
 
     // 休業情報を更新し、更新し終わった状態にする
     const HandleUpdateKyugyoAndSetUpdatedMode = (e) => {
-        console.log('updating...');
         const updateKyugyos = {
             id: id,
             storeName: storeName,
@@ -41,14 +40,12 @@ const KyugyoPage = (props) => {
             access: access,
             hpUrl: hpUrl
         }
-        console.log(updateKyugyos);
         axios.put(`${apiUrl}/${id}`, updateKyugyos)
         .then((e) => {
-            // history.push('/kyugyo-front');
             setIsUpdating(!isUpdating);
-            // リダイレクト？
-            const url = `/kyugyo-front/kyugyo/${id}`;
-            history.push(url);
+            // 一旦トップへ飛ばすことにする            
+            // const url = `/kyugyo-front/kyugyo/${id}`;
+            history.push('/kyugyo-front');
         })
         e.preventDefault();
     }
