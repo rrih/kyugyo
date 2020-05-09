@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/kyugyo-front/static/css/main.d5a1e224.chunk.css",
-    "main.js": "/kyugyo-front/static/js/main.b85df12f.chunk.js",
-    "main.js.map": "/kyugyo-front/static/js/main.b85df12f.chunk.js.map",
+    "main.js": "/kyugyo-front/static/js/main.25ea7c52.chunk.js",
+    "main.js.map": "/kyugyo-front/static/js/main.25ea7c52.chunk.js.map",
     "runtime-main.js": "/kyugyo-front/static/js/runtime-main.ea915f5c.js",
     "runtime-main.js.map": "/kyugyo-front/static/js/runtime-main.ea915f5c.js.map",
     "static/js/2.f31efd03.chunk.js": "/kyugyo-front/static/js/2.f31efd03.chunk.js",
     "static/js/2.f31efd03.chunk.js.map": "/kyugyo-front/static/js/2.f31efd03.chunk.js.map",
     "index.html": "/kyugyo-front/index.html",
-    "precache-manifest.a31825bb997f9d686c7103c9d689e8ab.js": "/kyugyo-front/precache-manifest.a31825bb997f9d686c7103c9d689e8ab.js",
+    "precache-manifest.8a0a07e53d3b5b4c8ff4cdc8353d3438.js": "/kyugyo-front/precache-manifest.8a0a07e53d3b5b4c8ff4cdc8353d3438.js",
     "service-worker.js": "/kyugyo-front/service-worker.js",
     "static/css/main.d5a1e224.chunk.css.map": "/kyugyo-front/static/css/main.d5a1e224.chunk.css.map",
     "static/js/2.f31efd03.chunk.js.LICENSE.txt": "/kyugyo-front/static/js/2.f31efd03.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ea915f5c.js",
     "static/js/2.f31efd03.chunk.js",
     "static/css/main.d5a1e224.chunk.css",
-    "static/js/main.b85df12f.chunk.js"
+    "static/js/main.25ea7c52.chunk.js"
   ]
 }
