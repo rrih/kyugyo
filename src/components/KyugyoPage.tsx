@@ -6,7 +6,7 @@ import apiUrl from '../config';
 import { useState } from 'react';
 import InputKyugyo from './InputKyugyo';
 import history from "../history";
-import KyugyoContent from './KyugyoContent';
+// import KyugyoContent from './KyugyoContent';
 
 
 // 休業POSTをクリックすると遷移する休業1店舗についての詳細ページ
