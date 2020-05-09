@@ -1,4 +1,3 @@
-// うまいこと分割できないので後回し
 // import * as React from 'react';
 // import { KyugyoType } from '../models/interfaces';
 // import { useState, useEffect } from 'react';
