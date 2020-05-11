@@ -45,6 +45,7 @@ const App = () => {
             <Route exact path='/kyugyo-front/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match} getKyugyos={getKyugyos} comments={comments}/>} />
           </Switch>
           <div className="text-center mt-5 pt-5">
+            <Link to='/kyugyo-front/post' className="text-white border p-3 rounded-pill kg-post bg-dark d-block d-md-none"><i className="fas fa-pen fa-lg pt-2"></i></Link>
             <Link to='/kyugyo-front/about' className="text-white">休業.comについて</Link>
           </div>
         </div>

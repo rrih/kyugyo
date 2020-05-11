@@ -20,7 +20,6 @@ const TopPageContainer = (props) => {
 
     return (
         <>
-            <Link to='/kyugyo-front/post' className="btn btn-outline-light mb-3">休業情報を投稿する</Link>
             <KyugyoList
                 kyugyos={kyugyos}
             />

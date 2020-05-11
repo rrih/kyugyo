@@ -22,3 +22,13 @@
         pointer-events: all;
     }
 }
+
+.kg-post {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    // left: 0;
+    z-index: 1030;
+    width: 70px;
+    height: 70px;
+}
