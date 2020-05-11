@@ -15,6 +15,7 @@ import HeaderBar from './components/HeaderBar';
 const App = () => {
   const [kyugyos, setKyugyos] = useState<KyugyoType[]>([]);
   const [comments, setComments] = useState<CommentPostType[]>([]);
+  const [isLoading, setIsLoading] = useState<Boolean>(true);
 
   const getKyugyos = async () => {
     const response = await axios.get(apiUrl);
@@ -29,9 +30,22 @@ const App = () => {
   }
 
   useEffect(() => {
+    console.log(isLoading);
     getKyugyos();
     getAllComments();
+    setIsLoading(false);
+    console.log(isLoading);
   }, []);
+
+  // const load = () => {
+  //   if (isLoading) {
+  //     return (
+  //       <div className="text-white">
+  //         読み込み中...
+  //       </div>
+  //     );
+  //   }
+  // }
 
   return (
     <div className="bg-dark pb-5">
@@ -45,6 +59,7 @@ const App = () => {
             <Route exact path='/kyugyo-front/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match} getKyugyos={getKyugyos} comments={comments}/>} />
           </Switch>
           <div className="text-center mt-5 pt-5">
+            {isLoading && (<span className="text-white">読み込み中…</span>)}
             <Link to='/kyugyo-front/post' className="text-white border p-3 rounded-pill kg-post bg-dark d-block d-md-none"><i className="fas fa-pen fa-lg pt-2"></i></Link>
             <Link to='/kyugyo-front/about' className="text-white">休業.comについて</Link>
           </div>
