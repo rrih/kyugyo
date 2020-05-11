@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, DetailedHTMLProps, HTMLAttributes } from 'react';
 import { KyugyoType, CommentPostType } from '../models/interfaces';
 import axios from 'axios';
 import apiUrl, { commentUrl } from '../config';
@@ -30,6 +30,7 @@ const KyugyoPage = (props) => {
         if (kyugyo !== undefined) {
             axios.delete(`${apiUrl}/${kyugyo.id}`, { data: kyugyo }).then((e) => {
                 history.push('/kyugyo-front');
+                window.location.reload();
             })
         }
         e.preventDefault();
@@ -83,9 +84,9 @@ const KyugyoPage = (props) => {
             <h2 className="text-white mb-4">店舗情報</h2>
             {(kyugyo !== undefined && !isUpdating) && (
                 <>
-                    <div className="flex-fill text-white kg-font-size ml-4">
+                    <div className="flex-fill text-white kg-font-size ml-0 ml-sm-4">
                         <div className="kg-kyugyo-button text-center border border-white h3
-                                        text-white rounded-pill text-nowrap mx-auto p-2 p-sm-3 my-3 my-sm-5 w-25">
+                                        text-white rounded-pill text-nowrap mx-auto p-2 p-sm-3 my-3 my-sm-5 w-50">
                             {kyugyo.isClosed ? '休業中' : '開業中'}
                         </div>
                         <div className="h3 border border-white mb-3 py-4 px-5">店名：{kyugyo.storeName}</div>
@@ -179,11 +180,43 @@ const KyugyoPage = (props) => {
             {!isUpdating && (<div className="text-right"><button onClick={changeUpdateMode} className="btn btn-outline-info mt-3">この休業情報を編集する</button></div>)}
             {isUpdating && (<div className="text-right"><button onClick={HandleUpdateKyugyoAndSetUpdatedMode} className="btn btn-outline-primary mt-3">この内容で編集完了する</button></div>)}
             {/* TODO 本当に削除するか確認モーダル追加 */}
-            <div className="text-right"><button onClick={HandleDeleteKyugyo} className="btn btn-outline-danger mt-3">この休業情報を削除する</button></div>
+            <div className="text-right">
+                <button
+                    type="button"
+                    // onClick={HandleDeleteKyugyo}
+                    className="btn btn-outline-danger mt-3"
+                    data-toggle="modal"
+                    data-target="#kyugyo-delete-modal"
+                >
+                    この休業情報を削除する
+                </button>
+                <div className="modal fade" id="kyugyo-delete-modal" role="dialog" aria-labelledby="danger-label" aria-hidden="true" tabIndex={-1} >
+                    <div className="modal-dialog text-left" role="document">
+                        <div className="modal-content bg-dark">
+                        <div className="modal-header">
+                            <div className="h3 modal-title text-center font-weight-bold text-danger d-block mx-auto" id="danger-label">注意</div>
+                        </div>
+                        <div className="modal-body text-danger font-weight-bold">
+                            本当に消しますか？<br />
+                            この休業情報を削除する場合、休業情報と、書き込まれているコメントが全て消去されます。<br />
+                            ※この動作はやり直しができません
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-outline-danger" onClick={HandleDeleteKyugyo}>削除する</button>
+                            <button type="button" className="btn btn-outline-primary" data-dismiss="modal">削除しない</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
 
             <div className="comments">
-                <div className="inputComment text-white">
-                    コメントを入れてみる！
+                <div className="inputComment text-white my-5">
+                    <div className="text-center">
+                        <span>{kyugyo.storeName} の休業情報について<br />コメントを書き込む</span>
+                    </div>
                     <form className="border border-white">
                         <div className="p-4">
                             <label>名前</label>
@@ -192,6 +225,7 @@ const KyugyoPage = (props) => {
                                 name="author"
                                 onChange={(e) => { setAuthor(e.target.value) }}
                                 className='form-control'
+                                placeholder='名無しさん'
                             />
                         </div>
                         <div className="p-4">
@@ -204,15 +238,25 @@ const KyugyoPage = (props) => {
                             />
                         </div>
                     </form>
-                    <button className="btn btn-outline-light" onClick={handleCommentSubmit}>コメントする</button>
+                    <span className="text-center">
+                        <button className="btn btn-outline-light m-3 d-block mx-auto" onClick={handleCommentSubmit}>コメントする</button>
+                    </span>
                 </div>
-                {comments.map((comment) => {
-                    return (
-                        <li key={comment.id} className="text-white">
-                            {comment.text} ({comment.author !== '' ? comment.author : '名無しさん'})
-                        </li>
-                    )
-                })}
+                <div>
+                    <ul className="list-unstyled">
+                        {comments.length === 0 && (
+                            <span className="text-white">まだコメントが書かれていないようです。コメントを書いてみましょう</span>
+                        )}
+                        {comments.length !== 0 && (<div className="text-white">コメント覧</div>)}
+                        {comments.map((comment) => {
+                            return (
+                                <li key={comment.id} className="text-white border border-light p-2 my-2">
+                                    {comment.text} (名前:{comment.author !== '' ? comment.author : '名無し'}さん)
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
             </div>
         </>
     );
