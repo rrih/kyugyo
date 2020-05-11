@@ -71,7 +71,7 @@ const KyugyoPage = (props) => {
                 id: id
             }
         }
-        axios.post('http://localhost:8000/api/comments/', comment).then((e) => {
+        axios.post('https://kyugyo-back.herokuapp.com/api/comments/', comment).then((e) => {
             history.push('/kyugyo-front');
             window.location.reload();
         })

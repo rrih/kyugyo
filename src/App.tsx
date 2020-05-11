@@ -22,7 +22,7 @@ const App = () => {
   };
 
   const getAllComments = async () => {
-    await axios.get('http://localhost:8000/api/comments')
+    await axios.get('https://kyugyo-back.herokuapp.com/api/comments')
     .then((res) => {
       setComments(res.data);
     });
