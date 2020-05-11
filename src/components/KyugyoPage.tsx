@@ -1,9 +1,8 @@
 import * as React from 'react';
-// import { useState, useEffect } from 'react';
-import { KyugyoType } from '../models/interfaces';
+import { useState, useEffect } from 'react';
+import { KyugyoType, CommentPostType } from '../models/interfaces';
 import axios from 'axios';
-import apiUrl from '../config';
-import { useState } from 'react';
+import apiUrl, { commentUrl } from '../config';
 import InputKyugyo from './InputKyugyo';
 import history from "../history";
 // import KyugyoContent from './KyugyoContent';
@@ -12,8 +11,8 @@ import history from "../history";
 // 休業POSTをクリックすると遷移する休業1店舗についての詳細ページ
 const KyugyoPage = (props) => {
     const [kyugyos, setKyugyos] = useState(props.kyugyos); // 親とリンクしてる
-    const id = props.match.params.id;
-    const [kyugyo, setKyugyo] = useState<KyugyoType>(kyugyos.find((kyugyo: KyugyoType) => id === kyugyo.id));
+    const [id, setId] = useState(props.match.params.id);
+    const [kyugyo, setKyugyo] = useState(kyugyos.find((kyugyo: KyugyoType) => id === kyugyo.id));
     const [isUpdating, setIsUpdating] = useState<Boolean>(false);
     // update用の変数
     const [isClosed, setIsClosed] = useState(kyugyo?.isClosed);
@@ -22,6 +21,10 @@ const KyugyoPage = (props) => {
     const [access, setAccess] = useState(kyugyo?.access);
     const [hpUrl, setHpUrl] = useState(kyugyo?.hpUrl);
     const [misc, setMisc] = useState(kyugyo?.misc);
+
+    const [comments, setComments] = useState(props.comments.filter((comment) => comment.kyugyo === kyugyo._id));
+    const [author, setAuthor] = useState('');
+    const [text, setText] = useState('');
 
     const HandleDeleteKyugyo = (e) => {
         if (kyugyo !== undefined) {
@@ -47,12 +50,6 @@ const KyugyoPage = (props) => {
         .then((res) => {
             setIsUpdating(!isUpdating);
             setKyugyo(res.data);
-            // setKyugyos(res.data);
-            
-            // 一旦トップへ飛ばすことにする            
-            // const url = `/kyugyo-front/kyugyo/${id}`;
-            // history.push(url);
-            // history.push('/kyugyo-front');
         })
         props.getKyugyos();
         e.preventDefault();
@@ -62,8 +59,25 @@ const KyugyoPage = (props) => {
      * この休業情報を編集するボタンが押された時にフォームへと変換するトリガー
      */
     const changeUpdateMode = () => {
+        console.log(comments);
         setIsUpdating(!isUpdating);
     }
+
+    const handleCommentSubmit = (e) => {
+        const comment = {
+            text: text,
+            author: author,
+            kyugyo: {
+                id: id
+            }
+        }
+        axios.post('http://localhost:8000/api/comments/', comment).then((e) => {
+            history.push('/kyugyo-front');
+            window.location.reload();
+        })
+        e.preventDefault();
+    }
+
     return (
         <>
             <h2 className="text-white mb-4">店舗情報</h2>
@@ -166,6 +180,40 @@ const KyugyoPage = (props) => {
             {isUpdating && (<div className="text-right"><button onClick={HandleUpdateKyugyoAndSetUpdatedMode} className="btn btn-outline-primary mt-3">この内容で編集完了する</button></div>)}
             {/* TODO 本当に削除するか確認モーダル追加 */}
             <div className="text-right"><button onClick={HandleDeleteKyugyo} className="btn btn-outline-danger mt-3">この休業情報を削除する</button></div>
+
+            <div className="comments">
+                <div className="inputComment text-white">
+                    コメントを入れてみる！
+                    <form className="border border-white">
+                        <div className="p-4">
+                            <label>名前</label>
+                            <input
+                                type="text"
+                                name="author"
+                                onChange={(e) => { setAuthor(e.target.value) }}
+                                className='form-control'
+                            />
+                        </div>
+                        <div className="p-4">
+                            <label>休業情報に対するコメント</label>
+                            <input
+                                type="text"
+                                name="text"
+                                onChange={(e) => { setText(e.target.value) }}
+                                className='form-control'
+                            />
+                        </div>
+                    </form>
+                    <button className="btn btn-outline-light" onClick={handleCommentSubmit}>コメントする</button>
+                </div>
+                {comments.map((comment) => {
+                    return (
+                        <li key={comment.id} className="text-white">
+                            {comment.text} ({comment.author !== '' ? comment.author : '名無しさん'})
+                        </li>
+                    )
+                })}
+            </div>
         </>
     );
 }
