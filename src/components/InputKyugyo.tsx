@@ -44,6 +44,7 @@ const InputKyugyo = () => {
                         name="storeName"
                         onChange={(e) => { setStoreName(e.target.value) }}
                         className='form-control'
+                        placeholder='休業中の店舗名を入力'
                     />
                 </div>
                 <div className="p-4">
@@ -53,6 +54,7 @@ const InputKyugyo = () => {
                       name="address"
                       onChange={(e) => { setAddress(e.target.value) }}
                       className='form-control'
+                      placeholder='休業中の店舗の住所を入力'
                     />
                 </div>
                 <div className="p-4">
@@ -62,6 +64,7 @@ const InputKyugyo = () => {
                       name="access"
                       onChange={(e) => { setAccess(e.target.value) }}
                       className='form-control'
+                      placeholder='休業中の店舗のアクセスを入力'
                     />
                 </div>
                 <div className="p-4">
@@ -71,6 +74,7 @@ const InputKyugyo = () => {
                       name="hpUrl"
                       onChange={(e) => { setHpUrl(e.target.value) }}
                       className='form-control'
+                      placeholder='休業中の店舗に関するホームページ等のURLを入力'
                     />
                 </div>
                 <div className="p-4">
@@ -80,6 +84,7 @@ const InputKyugyo = () => {
                       name="misc"
                       onChange={(e) => { setMisc(e.target.value) }}
                       className='form-control'
+                      placeholder='備考欄'
                     />
                 </div>
                 <div className="text-center">

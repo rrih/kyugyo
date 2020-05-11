@@ -120,7 +120,7 @@ const KyugyoPage = (props) => {
                                     type="checkbox"
                                     name="isClosed"
                                     onClick={(e) => {setIsClosed(!isClosed)}}
-                                    defaultChecked
+                                    defaultChecked={isClosed}
                                 />
                             </div>
                             <div className="p-4">
