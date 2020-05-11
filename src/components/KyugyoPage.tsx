@@ -22,7 +22,7 @@ const KyugyoPage = (props) => {
     const [hpUrl, setHpUrl] = useState(kyugyo?.hpUrl);
     const [misc, setMisc] = useState(kyugyo?.misc);
 
-    const [comments, setComments] = useState(props.comments.filter((comment) => comment.kyugyo === kyugyo._id));
+    const [comments, setComments] = useState(props.comments.filter((comment: CommentPostType) => comment.kyugyo === kyugyo?._id));
     const [author, setAuthor] = useState('');
     const [text, setText] = useState('');
 
