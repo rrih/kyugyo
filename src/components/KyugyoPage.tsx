@@ -60,7 +60,6 @@ const KyugyoPage = (props) => {
      * この休業情報を編集するボタンが押された時にフォームへと変換するトリガー
      */
     const changeUpdateMode = () => {
-        console.log(comments);
         setIsUpdating(!isUpdating);
     }
 
@@ -96,7 +95,7 @@ const KyugyoPage = (props) => {
                         </div>
                         <div className="border border-white mb-3 py-4 px-5">
                             <h3>店舗URL</h3>
-                            {kyugyo.hpUrl}
+                            <a href={kyugyo.hpUrl}>{kyugyo.hpUrl}</a>
                         </div>
                         <div className="kg-misc-box border border-white mb-3 pt-4 pb-5 px-5">
                             <h3>備考</h3>

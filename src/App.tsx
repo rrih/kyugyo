@@ -11,6 +11,7 @@ import apiUrl, { commentUrl } from "./config";
 import PostPageContainer from './components/PostPageContainer';
 import history from "./history";
 import HeaderBar from './components/HeaderBar';
+import Login from './components/Login';
 
 const App = () => {
   const [kyugyos, setKyugyos] = useState<KyugyoType[]>([]);
@@ -30,22 +31,10 @@ const App = () => {
   }
 
   useEffect(() => {
-    console.log(isLoading);
     getKyugyos();
     getAllComments();
     setIsLoading(false);
-    console.log(isLoading);
   }, []);
-
-  // const load = () => {
-  //   if (isLoading) {
-  //     return (
-  //       <div className="text-white">
-  //         読み込み中...
-  //       </div>
-  //     );
-  //   }
-  // }
 
   return (
     <div className="bg-dark pb-5">
@@ -57,6 +46,7 @@ const App = () => {
             <Route exact path='/kyugyo-front/about' render={() => <About />} />
             <Route exact path='/kyugyo-front/post' render={() => <PostPageContainer />} />
             <Route exact path='/kyugyo-front/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match} getKyugyos={getKyugyos} comments={comments}/>} />
+            <Route exact path='/kyugyo-front/login' render={() => <Login />} />
           </Switch>
           <div className="text-center mt-5 pt-5">
             {isLoading && (<span className="text-white">読み込み中…</span>)}
