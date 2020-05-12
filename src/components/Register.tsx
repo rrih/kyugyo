@@ -24,7 +24,7 @@ const Register = () => {
                     className='form-control my-2'
                     placeholder='パスワード'
                 />
-                <button className='btn btn-outline-primary my-5'>アカウントを登録する</button>
+                <button className='btn btn-outline-info my-5'>アカウントを登録する</button>
             </form>
         </div>
     )

@@ -95,7 +95,7 @@ const KyugyoPage = (props) => {
                         </div>
                         <div className="border border-white mb-3 py-4 px-5">
                             <h3>店舗URL</h3>
-                            <a href={kyugyo.hpUrl}>{kyugyo.hpUrl}</a>
+                            {kyugyo.hpUrl}
                         </div>
                         <div className="kg-misc-box border border-white mb-3 pt-4 pb-5 px-5">
                             <h3>備考</h3>

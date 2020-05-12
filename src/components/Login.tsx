@@ -18,7 +18,7 @@ const Login = () => {
                     className='form-control my-2'
                     placeholder='パスワード'
                 />
-                <button className='btn btn-outline-primary my-5'>ログインする</button>
+                <button className='btn btn-outline-info my-5'>ログインする</button>
             </form>
             <Link to='/kyugyo-front/register' className='text-white text-decoration-none'>新規登録はこちらから</Link>
         </div>
