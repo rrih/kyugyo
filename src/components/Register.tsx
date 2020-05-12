@@ -1,11 +1,17 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
     return (
         <div className="text-white text-center">
-            <h1 className='my-5'>ログイン (TBD)</h1>
+            <h1 className='my-5'>新規登録(TBD)</h1>
             <form className='w-75 mx-auto'>
+                <input
+                    type="text"
+                    name="name"
+                    className='form-control my-2'
+                    placeholder='名前'
+                />
                 <input
                     type="text"
                     name="mailAddress"
@@ -18,11 +24,10 @@ const Login = () => {
                     className='form-control my-2'
                     placeholder='パスワード'
                 />
-                <button className='btn btn-outline-primary my-5'>ログインする</button>
+                <button className='btn btn-outline-primary my-5'>アカウントを登録する</button>
             </form>
-            <Link to='/kyugyo-front/register' className='text-white text-decoration-none'>新規登録はこちらから</Link>
         </div>
     )
 };
 
-export default Login;
+export default Register;

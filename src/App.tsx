@@ -12,6 +12,7 @@ import PostPageContainer from './components/PostPageContainer';
 import history from "./history";
 import HeaderBar from './components/HeaderBar';
 import Login from './components/Login';
+import Register from './components/Register';
 
 const App = () => {
   const [kyugyos, setKyugyos] = useState<KyugyoType[]>([]);
@@ -47,6 +48,7 @@ const App = () => {
             <Route exact path='/kyugyo-front/post' render={() => <PostPageContainer />} />
             <Route exact path='/kyugyo-front/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match} getKyugyos={getKyugyos} comments={comments}/>} />
             <Route exact path='/kyugyo-front/login' render={() => <Login />} />
+            <Route exact path='/kyugyo-front/register' render={() => <Register />} />
           </Switch>
           <div className="text-center mt-5 pt-5">
             {isLoading && (<span className="text-white">読み込み中…</span>)}
