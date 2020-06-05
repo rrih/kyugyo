@@ -51,7 +51,6 @@ const App = () => {
             <Route exact path='/kyugyo-front/register' render={() => <Register />} />
           </Switch>
           <div className="text-center mt-5 pt-5">
-            {isLoading && (<span className="text-white">読み込み中…</span>)}
             <Link to='/kyugyo-front/post' className="text-white border p-3 rounded-pill kg-post bg-dark d-block d-md-none"><i className="fas fa-pen fa-lg pt-2"></i></Link>
             <Link to='/kyugyo-front/about' className="text-white">休業.comについて</Link>
           </div>
