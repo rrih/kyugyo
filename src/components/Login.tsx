@@ -20,7 +20,7 @@ const Login = () => {
                 />
                 <button className='btn btn-outline-info my-5'>ログインする</button>
             </form>
-            <Link to='/kyugyo-front/register' className='text-white text-decoration-none'>新規登録はこちらから</Link>
+            <Link to='/kyugyo/register' className='text-white text-decoration-none'>新規登録はこちらから</Link>
         </div>
     )
 };

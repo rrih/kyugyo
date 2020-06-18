@@ -9,7 +9,7 @@ const About = () => {
                     休業.comに訪問いただきありがとうございます。当サイトは開発中のため、保存したデータが突然消えることがあります。ご了承ください。
                 </p>
                 <h2>現在開発中</h2>
-                <h3><a href='https://github.com/ryohek/kyugyo-front' className='text-white text-decoration-none'>フロントエンド</a></h3>
+                <h3><a href='https://github.com/ryohek/kyugyo' className='text-white text-decoration-none'>フロントエンド</a></h3>
                 <h4>使用技術</h4>
                 <ul>
                     <li>React</li>
@@ -33,7 +33,7 @@ const About = () => {
                 メールアドレス：rsklvあっとicloud.com<br />
                 あっと部分を@にしてください
                 <h2>サービスに関する改善、修正要望、不具合があったらissueにお願いします</h2>
-                <a href='https://github.com/ryohek/kyugyo-front/issues' className="text-white">フロント側(画面上の不具合、4XX系のエラーが出た場合)はこちらから</a><br/>
+                <a href='https://github.com/ryohek/kyugyo/issues' className="text-white">フロント側(画面上の不具合、4XX系のエラーが出た場合)はこちらから</a><br/>
                 <a href='https://github.com/ryohek/kyugyo-back/issues' className="text-white">サーバー側(5XX系のエラーが出た場合)はこちらから</a>
             </div>
         </div>

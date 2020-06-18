@@ -26,7 +26,7 @@ const InputKyugyo = () => {
             hpUrl: hpUrl
         }
         axios.post(apiUrl, kyugyos).then((e) => {
-            history.push('/kyugyo-front');
+            history.push('/kyugyo');
             window.location.reload();
         })
         e.preventDefault();

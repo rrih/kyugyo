@@ -29,7 +29,7 @@ const KyugyoPage = (props) => {
     const HandleDeleteKyugyo = (e) => {
         if (kyugyo !== undefined) {
             axios.delete(`${apiUrl}/${kyugyo.id}`, { data: kyugyo }).then((e) => {
-                history.push('/kyugyo-front');
+                history.push('/kyugyo');
                 window.location.reload();
             })
         }
@@ -72,7 +72,7 @@ const KyugyoPage = (props) => {
             }
         }
         axios.post('https://kyugyo-back.herokuapp.com/api/comments/', comment).then((e) => {
-            history.push('/kyugyo-front');
+            history.push('/kyugyo');
             window.location.reload();
         })
         e.preventDefault();
