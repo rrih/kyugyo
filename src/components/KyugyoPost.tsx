@@ -10,11 +10,19 @@ const KyugyoPost = (props) => {
     return (
         <Link to={link}>
             <div className="flex-fill text-white kg-post-box">
-                <div>店名{kyugyo.storeName}</div>
-                <div>住所：{kyugyo.address}</div>
-                <div>店舗URL：{kyugyo.hpUrl}</div>
-                <div>更新日時：{kyugyo.updatedAt}</div>
-                <div className="border border-white text-white p-2 p-sm-3 rounded-pill text-nowrap my-3 my-sm-0 kg-kyugyo-button text-center">
+                <div className='border-bottom py-2'>
+                    <span className='font-weight-bold mr-3'>店名</span>
+                    <span>{kyugyo.storeName !== "" ? kyugyo.storeName : '未入力'}</span>
+                </div>
+                <div className='border-bottom py-2'>
+                    <span className='font-weight-bold mr-3'>住所</span>
+                    <span>{kyugyo.address !== "" ? kyugyo.address : '未入力'}</span>
+                </div>
+                <div className='border-bottom py-2'>
+                    <span className='font-weight-bold mr-3'>店舗URL</span>
+                    <span>{kyugyo.hpUrl !== "" ? kyugyo.hpUrl : '未入力'}</span>
+                </div>
+                <div className={`font-weight-bold border border-white p-2 p-sm-3 rounded-pill text-nowrap my-3 my-sm-0 kg-kyugyo-button text-center text-white ${kyugyo.isClosed ? 'bg-danger' : 'bg-success'}`}>
                     {kyugyo.isClosed ? '休業中' : '開業中'}
                 </div>
             </div>
