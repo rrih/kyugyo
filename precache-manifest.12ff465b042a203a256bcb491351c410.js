@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dccc0985a0add8632b841c1ee4fe04c3",
+    "revision": "89bdd0fcbd9b0b69202581b01c3cd149",
     "url": "/kyugyo/index.html"
   },
   {
-    "revision": "53bc9d6a428bce9b17da",
+    "revision": "1755b1c6f1d4116c4bcc",
     "url": "/kyugyo/static/css/main.7fbade7d.chunk.css"
   },
   {
-    "revision": "e529a03c19c0b73d290f",
-    "url": "/kyugyo/static/js/2.414c70b2.chunk.js"
+    "revision": "f6f9a656b277615e1d13",
+    "url": "/kyugyo/static/js/2.502d47e8.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/kyugyo/static/js/2.414c70b2.chunk.js.LICENSE.txt"
+    "url": "/kyugyo/static/js/2.502d47e8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "53bc9d6a428bce9b17da",
-    "url": "/kyugyo/static/js/main.d5cfd5c6.chunk.js"
+    "revision": "1755b1c6f1d4116c4bcc",
+    "url": "/kyugyo/static/js/main.f19f2aa2.chunk.js"
   },
   {
     "revision": "28c227d45559ba0729a6",
