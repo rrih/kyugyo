@@ -39,25 +39,23 @@ const App = () => {
 
   return (
     <div className="bg-dark pb-5">
-      <Router history={history}>
+      <HashRouter>
         <HeaderBar />
         <div className="w-100 mx-auto my-4 px-sm-5">
-          <HashRouter>
-            <Switch>
-              <Route exact path='/' render={() => <TopPageContainer kyugyos={kyugyos} />} />
-              <Route exact path='/about' render={() => <About />} />
-              <Route exact path='/post' render={() => <PostPageContainer />} />
-              <Route exact path='/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match} getKyugyos={getKyugyos} comments={comments}/>} />
-              <Route exact path='/login' render={() => <Login />} />
-              <Route exact path='/register' render={() => <Register />} />
-            </Switch>
-          </HashRouter>
+          <Switch>
+            <Route exact path='/' render={() => <TopPageContainer kyugyos={kyugyos} />} />
+            <Route exact path='/about' render={() => <About />} />
+            <Route exact path='/post' render={() => <PostPageContainer />} />
+            <Route exact path='/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match} getKyugyos={getKyugyos} comments={comments}/>} />
+            <Route exact path='/login' render={() => <Login />} />
+            <Route exact path='/register' render={() => <Register />} />
+          </Switch>
           <div className="text-center mt-5 pt-5">
             <Link to='/post' className="text-white border p-3 rounded-pill kg-post bg-dark d-block d-md-none"><i className="fas fa-pen fa-lg pt-2"></i></Link>
             <Link to='/about' className="text-white">休業.comについて</Link>
           </div>
         </div>
-      </Router>
+      </HashRouter>
     </div>
   );
 }
