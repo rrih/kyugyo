@@ -43,7 +43,7 @@ const App = () => {
         <HeaderBar />
         <div className="w-100 mx-auto my-4 px-sm-5">
           <Switch>
-            <Route exact path='/' render={() => <TopPageContainer kyugyos={kyugyos} />} />
+            <Route exact path='/' render={() => <TopPageContainer kyugyos={kyugyos} allComments={comments}/>} />
             <Route exact path='/about' render={() => <About />} />
             <Route exact path='/post' render={() => <PostPageContainer />} />
             <Route exact path='/kyugyos/:id' render={({match}) => <KyugyoPage kyugyos={kyugyos} match={match} getKyugyos={getKyugyos} comments={comments}/>} />

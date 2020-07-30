@@ -1,16 +1,36 @@
 import * as React from 'react';
-// import { useState, useEffect } from 'react';
 import KyugyoPost from './KyugyoPost';
-// import { KyugyoType } from '../models/interfaces';
+import { useState, useEffect } from 'react';
+import axios from "axios";
+import { KyugyoType, CommentPostType } from '../models/interfaces';
+import apiUrl from '../config';
 // import { Route } from 'react-router-dom';
 // import KyugyoPage from './KyugyoPage';
 
 const KyugyoList = (props) => {
-    const { kyugyos, setKyugyos } = props;
+    const [ kyugyos, setKyugyos ] = useState<KyugyoType[]>(props.kyugyos);
+    const [ allComments, setAllComments ] = useState<CommentPostType[]>(props.comments);
+
+    const getKyugyos = async () => {
+        const response = await axios.get(apiUrl);
+        setKyugyos(response.data);
+    };
+
+    const getAllComments = async () => {
+        await axios.get('https://kyugyo-back.herokuapp.com/api/comments')
+        .then((res) => {
+            setAllComments(res.data);
+        });
+    };
+
+    useEffect(() => {
+        getKyugyos();
+        getAllComments();
+    }, []);
 
     return (
-        <>
-            <ul className="list-unstyled px-sm-5">
+        <div className="d-flex">
+            <ul className="list-unstyled px-sm-5 w-75">
                 {kyugyos.map((k, i) => {
                     return (
                         // <KyugyoPost />
@@ -22,7 +42,22 @@ const KyugyoList = (props) => {
                     )
                 })}
             </ul>
-        </>
+
+            {allComments && (
+                <div className="text-white">
+                    <h2>新着コメント</h2>
+                    <ul className="list-unstyled w-25 text-white">
+                        {allComments.map((comment, i) => {
+                            return (
+                                <li key={`comment-${i}`}>
+                                    {comment.text} by {comment.author}
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
+            )}
+        </div>
     );
 };
 
